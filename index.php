@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A Leaflet map!</title>
+  <title>Rat Density Web Map</title>
   <link rel="stylesheet" href="./css/leaflet.css"/>
   <link rel="stylesheet" href="./css/MarkerCluster.css" />
   <script src="./scripts/leaflet.js"></script>
@@ -59,7 +59,7 @@
 			feature.properties.density = input.value;
 			//console.log(feature.properties.Name);
 			//console.log(input.value);
-			$.post("updateGeojson.php", {density : feature.properties.density, name: feature.properties.Name}, function(data){  
+			$.post("https://webmap-rat.herokuapp.com/updateGeojson.php", {density : feature.properties.density, name: feature.properties.Name}, function(data){  
 				alert("Changed the Value of "+data);
 				console.log(data);
 			});
@@ -116,7 +116,7 @@
  
  //-------------------------------------------------------
  //CREATING CLUSTERS 
-	$.getJSON("rodents.geoson",function(data){
+	$.getJSON("/geojson/rodents.geoson",function(data){
     var rodents = L.geoJson(data,{
       pointToLayer: function(feature,latlng){
         var marker = L.marker(latlng);
