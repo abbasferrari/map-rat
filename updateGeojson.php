@@ -3,7 +3,7 @@ $changeDensity = $_REQUEST["density"];
 $ofCity = $_REQUEST["name"];
 
 header('Content-type: application/json');
-$strJsonFileContents = file_get_contents("neighborhood.geojson");
+$strJsonFileContents = file_get_contents("/geojson/neighborhood.geojson");
 $arr = json_decode($strJsonFileContents,true);
 
 for($i = 0 ; $i < count($arr["features"]); $i++){
